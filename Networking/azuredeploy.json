@@ -1,0 +1,68 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnetName": {
+            "type": "string",
+            "maxLength": 26,
+            "defaultValue": "nzdemo-sc-vnet",
+            "metadata": {
+                "description": "The value to use for the vnet name."
+            }
+        },
+        "subnetName": {
+            "type": "string",
+            "maxLength": 26,
+            "defaultValue": "subnet-test",
+            "metadata": {
+                "description": "The value to use for the subnet name."
+            }
+        },
+        "addressSpace": {
+            "type": "string",
+            "maxLength": 26,
+            "defaultValue": "10.0.8.0/24",
+            "metadata": {
+                "description": "The value to use for the vnet address."
+            }
+        },
+        "subnetAddress": {
+            "type": "string",
+            "maxLength": 26,
+            "defaultValue": "10.0.8.0/28",
+            "metadata": {
+                "description": "The value to use for the subnet address."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('vnetName')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2015-06-15",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": ["[parameters('addressSpace')]"]
+                },
+                "dhcpOptions": {
+                    "dnsServers": [
+                        "192.168.1.18"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "id": "subnet-test",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnetAddress')]"
+                        },
+                        "name": "[parameters('subnetName')]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}

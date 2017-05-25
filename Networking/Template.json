@@ -1,0 +1,587 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "disks_nz_cloud_dc_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262_name": {
+            "defaultValue": "nz-cloud-dc_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262",
+            "type": "String"
+        },
+        "disks_nz_dns_test_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5_name": {
+            "defaultValue": "nz-dns-test_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5",
+            "type": "String"
+        },
+        "virtualMachines_nz_cloud_dc_name": {
+            "defaultValue": "nz-cloud-dc",
+            "type": "String"
+        },
+        "virtualMachines_nz_dns_test_name": {
+            "defaultValue": "nz-dns-test",
+            "type": "String"
+        },
+        "networkInterfaces_nz_cloud_dc295_name": {
+            "defaultValue": "nz-cloud-dc295",
+            "type": "String"
+        },
+        "networkInterfaces_nz_dns_test722_name": {
+            "defaultValue": "nz-dns-test722",
+            "type": "String"
+        },
+        "networkSecurityGroups_linux_msdn_lab_nsg_name": {
+            "defaultValue": "linux-msdn-lab-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_nz_cloud_dc_nsg_name": {
+            "defaultValue": "nz-cloud-dc-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_nzdemodc_nsg_name": {
+            "defaultValue": "nzdemodc-nsg",
+            "type": "String"
+        },
+        "publicIPAddresses_linux_msdn_lab_ip_name": {
+            "defaultValue": "linux-msdn-lab-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_nz_cloud_dc_ip_name": {
+            "defaultValue": "nz-cloud-dc-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_nzdemodc_ip_name": {
+            "defaultValue": "nzdemodc-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_SC_GWIP_name": {
+            "defaultValue": "SC-GWIP",
+            "type": "String"
+        },
+        "virtualNetworks_nzdemo_sc_vnet_name": {
+            "defaultValue": "nzdemo-sc-vnet",
+            "type": "String"
+        },
+        "storageAccounts_nzdemoscvnetstorage_name": {
+            "defaultValue": "nzdemoscvnetstorage",
+            "type": "String"
+        },
+        "storageAccounts_nzdemoscvnetvmdiag_name": {
+            "defaultValue": "nzdemoscvnetvmdiag",
+            "type": "String"
+        },
+        "virtualNetworks_nzdemo_sc_vnet_id": {
+            "defaultValue": "/subscriptions/03228871-7f68-4594-b208-2d8207a65428/resourceGroups/nzdemo-sc-vnet2-rg/providers/Microsoft.Network/virtualNetworks/nzdemo-sc-vnet2",
+            "type": "String"
+        },
+        "virtualNetworks_nzdemo_sc_vnet_id_1": {
+            "defaultValue": "/subscriptions/03228871-7f68-4594-b208-2d8207a65428/resourceGroups/nzdemo-sc-vnet3-rg/providers/Microsoft.Network/virtualNetworks/nzdemo-sc-vnet3",
+            "type": "String"
+        },
+        "virtualNetworks_nzdemo_sc_vnet_id_2": {
+            "defaultValue": "/subscriptions/2a9f734d-78aa-4a8e-bd6e-268b013d868c/resourceGroups/nzlab-rg/providers/Microsoft.Network/virtualNetworks/nzlab-sc-vnet",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Compute/disks/nz-cloud-dc_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262'.",
+            "type": "Microsoft.Compute/disks",
+            "name": "[parameters('disks_nz_cloud_dc_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262_name')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "southcentralus",
+            "properties": {
+                "accountType": "Standard_LRS",
+                "osType": "Windows",
+                "creationData": {
+                    "createOption": "FromImage",
+                    "imageReference": {
+                        "id": "/Subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/Providers/Microsoft.Compute/Locations/southcentralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2016-Datacenter/Versions/latest"
+                    }
+                },
+                "diskSizeGB": 128
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Compute/disks/nz-dns-test_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5'.",
+            "type": "Microsoft.Compute/disks",
+            "name": "[parameters('disks_nz_dns_test_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5_name')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "southcentralus",
+            "properties": {
+                "accountType": "Standard_LRS",
+                "osType": "Windows",
+                "creationData": {
+                    "createOption": "FromImage",
+                    "imageReference": {
+                        "id": "/Subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/Providers/Microsoft.Compute/Locations/southcentralus/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/WindowsServer/Skus/2012-R2-Datacenter/Versions/latest"
+                    }
+                },
+                "diskSizeGB": 128
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Compute/virtualMachines/nz-cloud-dc'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_nz_cloud_dc_name')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "southcentralus",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_A1_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_nz_cloud_dc_name'),'_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS",
+                            "id": "[resourceId('Microsoft.Compute/disks', parameters('disks_nz_cloud_dc_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262_name'))]"
+                        },
+                        "diskSizeGB": 128
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_nz_cloud_dc_name')]",
+                    "adminUsername": "naveedzaheer",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nz_cloud_dc295_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_nzdemoscvnetvmdiag_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/disks', parameters('disks_nz_cloud_dc_OsDisk_1_d3411af9f7824fbfbfa43a93c7803262_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nz_cloud_dc295_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_nzdemoscvnetvmdiag_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Compute/virtualMachines/nz-dns-test'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_nz_dns_test_name')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "southcentralus",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D1"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2012-R2-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat(parameters('virtualMachines_nz_dns_test_name'),'_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "id": "[resourceId('Microsoft.Compute/disks', parameters('disks_nz_dns_test_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5_name'))]"
+                        }
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_nz_dns_test_name')]",
+                    "adminUsername": "naveedzaheer",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nz_dns_test722_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_nzdemoscvnetvmdiag_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/disks', parameters('disks_nz_dns_test_OsDisk_1_89b1b5ba46e7408f9998ef1fad5110f5_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_nz_dns_test722_name'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_nzdemoscvnetvmdiag_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/networkInterfaces/nz-cloud-dc295'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_nz_cloud_dc295_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.1.37",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_nz_cloud_dc_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_nzdemo_sc_vnet_name')), '/subnets/dc-subnet')]"
+                            }
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nzdemodc_nsg_name'))]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_nz_cloud_dc_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_nzdemo_sc_vnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nzdemodc_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/networkInterfaces/nz-dns-test722'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_nz_dns_test722_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.1.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_nzdemodc_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_nzdemo_sc_vnet_name')), '/subnets/web-subnet')]"
+                            }
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nzdemodc_nsg_name'))]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_nzdemodc_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_nzdemo_sc_vnet_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_nzdemodc_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/networkSecurityGroups/linux-msdn-lab-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_linux_msdn_lab_nsg_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-ssh",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "70.119.119.110/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "HTTP",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "70.119.119.110/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1010,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "HTTPS",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "70.119.119.110/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1020,
+                            "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "SSH-MS",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "167.220.148.93/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1030,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/networkSecurityGroups/nz-cloud-dc-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_nz_cloud_dc_nsg_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/networkSecurityGroups/nzdemodc-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_nzdemodc_nsg_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "70.119.119.110/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound"
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/publicIPAddresses/linux-msdn-lab-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_linux_msdn_lab_ip_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/publicIPAddresses/nz-cloud-dc-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_nz_cloud_dc_ip_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/publicIPAddresses/nzdemodc-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_nzdemodc_ip_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "nzdemodc"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/publicIPAddresses/SC-GWIP'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_SC_GWIP_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Network/virtualNetworks/nzdemo-sc-vnet'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_nzdemo_sc_vnet_name')]",
+            "apiVersion": "2017-03-01",
+            "location": "southcentralus",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.1.0/24"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": [
+                        "192.168.1.18"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "web-subnet",
+                        "properties": {
+                            "addressPrefix": "10.0.1.0/27"
+                        }
+                    },
+                    {
+                        "name": "GatewaySubnet",
+                        "properties": {
+                            "addressPrefix": "10.0.1.224/28"
+                        }
+                    },
+                    {
+                        "name": "dc-subnet",
+                        "properties": {
+                            "addressPrefix": "10.0.1.32/28"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [
+                    {
+                        "name": "vnet-to-vnet2",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_nzdemo_sc_vnet_id')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false
+                        }
+                    },
+                    {
+                        "name": "vnet-to-vnet3",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_nzdemo_sc_vnet_id_1')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false
+                        }
+                    },
+                    {
+                        "name": "vnet-to-lfcs",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_nzdemo_sc_vnet_id_2')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Storage/storageAccounts/nzdemoscvnetstorage'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_nzdemoscvnetstorage_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "southcentralus",
+            "tags": {},
+            "properties": {},
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/7e0f910b-6182-434c-a552-2b63ad635f23/resourceGroups/nzdemo-sc-vnet-rg/providers/Microsoft.Storage/storageAccounts/nzdemoscvnetvmdiag'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_nzdemoscvnetvmdiag_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "southcentralus",
+            "tags": {},
+            "properties": {},
+            "dependsOn": []
+        }
+    ]
+}
